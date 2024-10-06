@@ -1,11 +1,15 @@
-import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
-import { useState } from 'react';
-import Login from './pages/Login';
-import AdminDashboard from './pages/AdminDashboard';
-import TeamMembers from './pages/TeamMembers';
-import Contacts from './pages/Contacts';
-
-
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  Navigate,
+  Outlet,
+} from "react-router-dom";
+import { useState } from "react";
+import Login from "./pages/Login";
+import TeamMembers from "./pages/TeamMembers";
+import Contacts from "./pages/Contacts";
+import Layout from "./components/Layout";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -13,27 +17,29 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Pass setIsAuthenticated to the Login component here */}
-        <Route path='/' element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+        <Route
+          path="/"
+          element={<Login setIsAuthenticated={setIsAuthenticated} />}
+        />
 
-        {/* Protecting these routes */}
-        <Route 
-          path='/contacts' 
-          element={isAuthenticated ? <Contacts /> : <Navigate to="/adminDash" />} 
-        />
-        <Route 
-          path='/team-members' 
-          element={isAuthenticated ? <TeamMembers /> : <Navigate to="/adminDash" />} 
-        />
-        
-        <Route 
-          path='/adminDash' 
-          element={isAuthenticated ? <AdminDashboard /> : <Login setIsAuthenticated={setIsAuthenticated} />} 
-        />
+        {/* Wrap protected routes with Layout and pass setIsAuthenticated */}
+        <Route
+          element={
+            isAuthenticated ? (
+              <Layout setIsAuthenticated={setIsAuthenticated}>
+                <Outlet />
+              </Layout>
+            ) : (
+              <Navigate to="/" />
+            )
+          }
+        >
+          <Route path="/contacts" element={<Contacts />} />
+          <Route path="/team-members" element={<TeamMembers />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
 }
 
 export default App;
-

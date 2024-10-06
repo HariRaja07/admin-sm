@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
-import { message } from 'antd';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import React, { useState } from "react";
+import { message } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ setIsAuthenticated }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = () => {
-    // Check credentials
-    if (username === 'admin1' && password === '1234567') {
+    if (username === "admin1" && password === "1234567") {
       setIsAuthenticated(true);
-      message.success('Login successful!');
-      navigate('/adminDash'); // Navigate to admin dashboard
+      message.success("Login successful!");
+      navigate("/team-members");
     } else {
-      message.error('Invalid credentials. Please try again.');
+      message.error("Invalid credentials. Please try again.");
     }
   };
 
