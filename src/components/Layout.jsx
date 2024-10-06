@@ -32,8 +32,8 @@ const Layout = ({ children, setIsAuthenticated }) => {
             <img src={logo} alt="Logo" className="h-16 w-16 object-contain" />
           </div>
           <span className="text-lg font-extrabold text-white bg-clip-text text-transparent bg-white tracking-wider drop-shadow-md">
-            Company Name
-          </span>
+                        <span className="text-white text-2xl font-black tracking-wide">SM</span> Educational Consultant
+                    </span>
         </div>
         <div className="hidden md:flex items-center space-x-6 text-white font-medium">
           <Link
