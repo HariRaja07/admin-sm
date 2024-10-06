@@ -1,0 +1,74 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  height: 100vh; /* Full height */
+  background-image: url('https://source.unsplash.com/featured/?blue'); /* Background image */
+  background-size: cover; /* Cover the entire viewport */
+  background-position: center; /* Center the image */
+  display: flex; /* Use flexbox for centering */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+}
+
+.login-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%; /* Full height of the viewport */
+  width: 100%; /* Full width of the viewport */
+  background-image: url('https://source.unsplash.com/featured/?blue'); /* Background image */
+    background-size: cover;
+    background-position: center;
+  position: relative;
+}
+
+.login-box {
+  background: rgba(0, 0, 0, 0.8); /* Darker semi-transparent background */
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  width: 300px;
+  text-align: center;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+}
+
+.login-icon {
+  width: 50px; /* Set the size of your image */
+  height: 50px;
+  object-fit: cover; /* Ensure the image maintains aspect ratio */
+}
+
+.login-input {
+  border: none;
+  border-radius: 25px;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  width: 100%;
+  background: #ffffff; /* White background for inputs */
+  font-size: 16px;
+}
+
+.login-input:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Add focus effect */
+}
+
+.login-button {
+  background-color: #007bff; /* Blue button */
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.login-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
