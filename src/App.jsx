@@ -10,6 +10,9 @@ import Login from "./pages/Login";
 import TeamMembers from "./pages/TeamMembers";
 import Contacts from "./pages/Contacts";
 import Layout from "./components/Layout";
+import HomePage from "./pages/HomePage";
+import AuditForm from "./pages/AuditForm";
+import AboutForm from "./pages/AboutForm";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -36,6 +39,9 @@ function App() {
         >
           <Route path="/contacts" element={<Contacts />} />
           <Route path="/team-members" element={<TeamMembers />} />
+          <Route path="/homepage" element={<HomePage/>}/>
+          <Route path="/auditpage" element={<AuditForm/>}/>
+          <Route path="/aboutpage" element={<AboutForm/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
