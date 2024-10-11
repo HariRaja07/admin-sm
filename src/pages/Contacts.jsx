@@ -2,6 +2,8 @@ import { message } from "antd";
 import Layout from "../components/Layout";
 import React, { useEffect, useState } from "react";
 const backendUrl = "https://backend-qzdy.onrender.com";
+import axios from "axios";
+
 const Contacts = () => {
   const [contacts, setContacts] = useState([]);
 
@@ -20,6 +22,21 @@ const Contacts = () => {
     fetchContacts();
   }, []);
 
+  const handleDelete = async (contactId) => {
+    try {
+      const response = await axios.delete(`${backendUrl}/api/contacts/${contactId}`);
+      if (response.status === 200) {
+        // Update the contacts state by filtering out the deleted contact
+        setContacts(contacts.filter(contact => contact._id !== contactId));
+        message.success("Contact deleted successfully");
+      } else {
+        message.error("Failed to delete contact");
+      }
+    } catch (error) {
+      message.error("Error deleting contact");
+    }
+  };
+
   return (
     <div className="container mx-auto px-4 py-10">
       <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">
@@ -29,11 +46,19 @@ const Contacts = () => {
         {contacts.map((contact) => (
           <div
             key={contact._id}
-            className="bg-white border rounded-lg shadow-md p-5 hover:shadow-lg transition-shadow duration-200"
+            className="bg-white border rounded-lg shadow-md p-5 hover:shadow-lg transition-shadow duration-200 flex flex-col"
           >
-            <h3 className="text-xl font-semibold text-blue-600 mb-2">
-              {contact.fullName}
-            </h3>
+            <div className="flex justify-between items-center w-full mb-2">
+              <h3 className="text-xl font-semibold text-blue-600">
+                {contact.fullName}
+              </h3>
+              <button
+                onClick={() => handleDelete(contact._id)}
+                className="text-red-600 hover:text-red-800 transition"
+              >
+                Delete
+              </button>
+            </div>
             <p className="text-gray-700">
               <strong>Email:</strong> {contact.email}
             </p>

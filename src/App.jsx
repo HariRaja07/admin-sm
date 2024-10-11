@@ -13,6 +13,7 @@ import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import AuditForm from "./pages/AuditForm";
 import AboutForm from "./pages/AboutForm";
+import LayoutForm from "./pages/LayoutForm";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -42,6 +43,7 @@ function App() {
           <Route path="/homepage" element={<HomePage/>}/>
           <Route path="/auditpage" element={<AuditForm/>}/>
           <Route path="/aboutpage" element={<AboutForm/>}/>
+          <Route path="/layoutpage" element={<LayoutForm/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

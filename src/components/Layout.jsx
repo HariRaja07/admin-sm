@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaFacebookF, FaLinkedinIn, FaInstagram, FaTwitter } from "react-icons/fa"; // Import social media icons
-import logo from "../assets/img1.png";
+const backendUrl = "https://backend-qzdy.onrender.com";
+import axios from "axios";
+
 
 const Layout = ({ children, setIsAuthenticated }) => {
+  const [logo, setLogo] = useState({
+    image: "",
+  });
   const location = useLocation();
   const navigate = useNavigate();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -19,12 +24,24 @@ const Layout = ({ children, setIsAuthenticated }) => {
       : "hover:text-gray-300";
   };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      const logoResponse = await axios.get(
+        `${backendUrl}/api/logo`
+      );
+
+      setLogo(logoResponse.data);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <header className="w-full bg-gradient-to-r from-blue-500 to-blue-600 p-4 flex items-center justify-between shadow-lg fixed top-0 left-0 right-0 z-50">
         <div className="flex items-center space-x-4">
           <div className="relative w-20 h-20 bg-white rounded-full shadow-md overflow-hidden flex items-center justify-center transform transition-transform duration-300 hover:scale-110">
-            <img src={logo} alt="Logo" className="h-16 w-16 object-contain" />
+            <img src={`${backendUrl}/${logo.image}`} alt="Logo" className="h-16 w-16 object-contain" />
           </div>
           <span className="text-lg font-extrabold text-white tracking-wider">
             <span className="text-white text-2xl font-black tracking-wide">SM</span> Educational Consultant
@@ -62,6 +79,9 @@ const Layout = ({ children, setIsAuthenticated }) => {
             </Link>
             <Link to="/aboutpage" className={`mb-2 ${getActiveClass("/aboutpage")}`}>
               Manage About Page
+            </Link>
+            <Link to="/layoutpage" className={`mb-2 ${getActiveClass("/layoutpage")}`}>
+              Manage Layout Page
             </Link>
           </nav>
         </aside>
