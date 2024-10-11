@@ -91,7 +91,7 @@ const Layout = ({ children, setIsAuthenticated }) => {
           {/* Logo and Company Name */}
           <div className="flex flex-col items-center md:items-start space-y-4">
             <div className="flex items-center space-x-4">
-              <img src={logo} alt="SM-Ed-Consultant" className="h-16 w-16 object-contain" />
+              <img src={`${backendUrl}/${logo.image}`} alt="SM-Ed-Consultant" className="h-16 w-16 object-contain" />
               <span className="text-xl font-bold">SM Educational Consultant</span>
             </div>
             <p className="text-gray-400">Empowering Education with Expertise</p>
