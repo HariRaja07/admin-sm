@@ -48,12 +48,6 @@ const Layout = ({ children, setIsAuthenticated }) => {
           </span>
         </div>
         <nav className="hidden md:flex items-center space-x-6 text-white font-medium">
-          <Link to="/team-members" className={`px-2 py-1 ${getActiveClass("/team-members")}`}>
-            Manage Team Members
-          </Link>
-          <Link to="/contacts" className={`px-2 py-1 ${getActiveClass("/contacts")}`}>
-            View Contacts
-          </Link>
           <button onClick={handleLogout} className={`px-2 py-1 ${getActiveClass("")}`}>
             Logout
           </button>
