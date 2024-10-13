@@ -175,7 +175,7 @@ const AuditForm = () => {
                 className="flex justify-between items-center mb-2"
               >
                 <img
-                  src={`${backendUrl}/${b.image}`}
+                  src={b.image}
                   alt="Banner"
                   className="w-24 h-24 rounded object-cover"
                 />
@@ -243,7 +243,7 @@ const AuditForm = () => {
               <h4 className="font-semibold">{auditHeroData.title}</h4>
               <p>{auditHeroData.description}</p>
               <img
-                src={`${backendUrl}/${auditHeroData.image}`} // Ensure you display the current image
+                src={auditHeroData.image} // Ensure you display the current image
                 alt={auditHeroData.title}
                 className="w-32 h-32 rounded mt-2"
               />

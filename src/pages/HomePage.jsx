@@ -189,7 +189,7 @@ const HomePage = () => {
   <div className="mt-2">
     {banners.map(b => (
       <div key={b._id} className="flex justify-between items-center mb-2">
-        <img src={`${backendUrl}/${b.image}`} alt="Banner" className="w-24 h-24 rounded object-cover" />
+        <img src={b.image} alt="Banner" className="w-24 h-24 rounded object-cover" />
         <button onClick={() => handleDeleteBanner(b._id)} className="bg-red-500 text-white py-1 px-2 rounded ml-2">Delete</button>
       </div>
     ))}
@@ -280,7 +280,7 @@ const HomePage = () => {
         <div>
             <h4 className="font-semibold">{s.title}</h4>
             <p>{s.description}</p>
-            <img src={`${backendUrl}/${s.image}`} alt="Solution" className="w-24 h-24 rounded" />
+            <img src={s.image} alt="Solution" className="w-24 h-24 rounded" />
         </div>
         <div>
             <button onClick={() => handleEditSolution(s)} className="bg-blue-500 text-white py-1 px-2 rounded ml-2">Edit</button>

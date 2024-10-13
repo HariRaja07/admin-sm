@@ -91,20 +91,10 @@ const LayoutForm = () => {
           {logo && (
             <div className="mt-2">
               <img
-                src={`${backendUrl}/${logo.image}`} // Ensure you display the current image
+                src={logo.image} // Ensure you display the current image
                 alt="image"
                 className="w-32 h-32 rounded mt-2"
               />
-              <button
-                onClick={() =>
-                  setNewLogo({
-                    image: "", // Clear image for editing
-                  })
-                }
-                className="bg-blue-500 text-white py-1 px-2 rounded mt-2"
-              >
-                Edit Logo
-              </button>
             </div>
           )}
         </div>

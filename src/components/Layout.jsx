@@ -41,7 +41,7 @@ const Layout = ({ children, setIsAuthenticated }) => {
       <header className="w-full bg-gradient-to-r from-blue-500 to-blue-600 p-4 flex items-center justify-between shadow-lg fixed top-0 left-0 right-0 z-50">
         <div className="flex items-center space-x-4">
           <div className="relative w-20 h-20 bg-white rounded-full shadow-md overflow-hidden flex items-center justify-center transform transition-transform duration-300 hover:scale-110">
-            <img src={`${backendUrl}/${logo.image}`} alt="Logo" className="h-16 w-16 object-contain" />
+            <img src={logo.image} alt="Logo" className="h-16 w-16 object-contain" />
           </div>
           <span className="text-lg font-extrabold text-white tracking-wider">
             <span className="text-white text-2xl font-black tracking-wide">SM</span> Educational Consultant
@@ -91,7 +91,7 @@ const Layout = ({ children, setIsAuthenticated }) => {
           {/* Logo and Company Name */}
           <div className="flex flex-col items-center md:items-start space-y-4">
             <div className="flex items-center space-x-4">
-              <img src={`${backendUrl}/${logo.image}`} alt="SM-Ed-Consultant" className="h-16 w-16 object-contain" />
+              <img src={logo.image} alt="SM-Ed-Consultant" className="h-16 w-16 object-contain" />
               <span className="text-xl font-bold">SM Educational Consultant</span>
             </div>
             <p className="text-gray-400">Empowering Education with Expertise</p>
