@@ -6,8 +6,8 @@ import { MdDelete } from "react-icons/md";
 import { FaPhone, FaEnvelope, FaHome, FaGlobe } from "react-icons/fa";
 import logo from "../assets/mi.jpg";
 import { handleFileUpload } from "../hooks/handleFileUpload";
-// const backendUrl = "https://backend-qzdy.onrender.com";
-const backendUrl = "http://localhost:5000";
+const backendUrl = "https://backend-qzdy.onrender.com";
+// const backendUrl = "http://localhost:5000";
 
 const TeamMembers = () => {
   const [members, setMembers] = useState([]);
