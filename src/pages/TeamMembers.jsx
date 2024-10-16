@@ -5,10 +5,14 @@ import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { FaPhone, FaEnvelope, FaHome, FaGlobe } from "react-icons/fa";
 import logo from "../assets/mi.jpg";
-const backendUrl = "https://backend-qzdy.onrender.com";
+import { handleFileUpload } from "../hooks/handleFileUpload";
+// const backendUrl = "https://backend-qzdy.onrender.com";
+const backendUrl = "http://localhost:5000";
 
 const TeamMembers = () => {
   const [members, setMembers] = useState([]);
+  const [file, setFile] = useState(undefined);
+
   const [form, setForm] = useState({
     id: "",
     name: "",
@@ -42,6 +46,14 @@ const TeamMembers = () => {
 
   const handleAddSubmit = async (e) => {
     e.preventDefault();
+
+    if (file) {
+      const downloadUrl = await handleFileUpload(file);
+      form.image = downloadUrl;
+    }
+
+    console.log(form);
+    setFile(undefined);
     const response = await fetch(`${backendUrl}/api/team-members`, {
       method: "POST",
       headers: {
@@ -64,6 +76,13 @@ const TeamMembers = () => {
     e.preventDefault();
     console.log("Editing member with data: ", form); // Log the form data
 
+    if (file) {
+      const downloadUrl = await handleFileUpload(file);
+      form.image = downloadUrl;
+    }
+
+    console.log(form);
+    setFile(undefined);
     const response = await fetch(`${backendUrl}/api/team-members/${form.id}`, {
       method: "PUT",
       headers: {
@@ -120,6 +139,7 @@ const TeamMembers = () => {
       email: member.email,
       address: member.address,
       website: member.website,
+      image: member.image,
     });
     setIsModalVisible(true);
   };
@@ -165,7 +185,7 @@ const TeamMembers = () => {
               <div className="flex flex-col items-center p-4">
                 <img
                   alt={member.name}
-                  src={logo}
+                  src={member.image}
                   className="w-24 h-24 object-cover rounded-full border-0 border-white shadow-md mb-4"
                 />
                 <h2 className="text-xl font-bold text-black">{`${member.salutation} ${member.name}`}</h2>
@@ -249,6 +269,16 @@ const TeamMembers = () => {
                 </div>
               )
           )}
+
+          <div className="flex gap-3">
+            <label htmlFor="">{form.id ? "Edit Image" : "Add Image"}</label>
+            <input
+              onChange={(e) => setFile(e.target.files[0])}
+              type="file"
+              accept="image/*"
+              className="mb-5"
+            />
+          </div>
 
           <button
             type="submit"
