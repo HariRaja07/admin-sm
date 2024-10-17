@@ -18,8 +18,8 @@ const ServiceForm = () => {
   const fetchData = async () => {
     try {
       const [heroResponse, dataArrayResponse] = await Promise.all([
-        axios.get(`${backendUrl}/serviceHero`),
-        axios.get(`${backendUrl}/dataArray`)
+        axios.get(`${backendUrl}/api/serviceHero`),
+        axios.get(`${backendUrl}/api/dataArray`)
       ]);
       setHero(heroResponse.data);
       setDataArray(dataArrayResponse.data);
@@ -36,9 +36,9 @@ const ServiceForm = () => {
     e.preventDefault();
     try {
       if (hero) {
-        await axios.put(`${backendUrl}/serviceHero`, newHero);
+        await axios.put(`${backendUrl}/api/serviceHero`, newHero);
       } else {
-        await axios.post(`${backendUrl}/serviceHero`, newHero);
+        await axios.post(`${backendUrl}/api/serviceHero`, newHero);
       }
       setNewHero({ title: "", description: "" });
       fetchData();
@@ -49,7 +49,7 @@ const ServiceForm = () => {
 
   const handleDeleteHero = async () => {
     try {
-      await axios.delete(`${backendUrl}/serviceHero`);
+      await axios.delete(`${backendUrl}/api/serviceHero`);
       setHero(null);
       fetchData();
     } catch (error) {
@@ -83,8 +83,8 @@ const ServiceForm = () => {
     try {
       const method = editingIndex !== null ? 'put' : 'post';
       const url = editingIndex !== null 
-        ? `${backendUrl}/dataArray/${dataArray[editingIndex]._id}` 
-        : `${backendUrl}/dataArray`;
+        ? `${backendUrl}/api/dataArray/${dataArray[editingIndex]._id}` 
+        : `${backendUrl}/api/dataArray`;
       
       const response = await axios[method](url, newDataItem);
       
@@ -113,7 +113,7 @@ const ServiceForm = () => {
 
   const deleteDataItem = async (index) => {
     try {
-      await axios.delete(`${backendUrl}/dataArray/${dataArray[index]._id}`);
+      await axios.delete(`${backendUrl}/api/dataArray/${dataArray[index]._id}`);
       setDataArray((prev) => prev.filter((_, i) => i !== index));
     } catch (error) {
       console.error("Error deleting data item:", error);
