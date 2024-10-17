@@ -77,6 +77,12 @@ const Layout = ({ children, setIsAuthenticated }) => {
             <Link to="/layoutpage" className={`mb-2 ${getActiveClass("/layoutpage")}`}>
               Manage Layout Page
             </Link>
+            <Link to="/newspage" className={`mb-2 ${getActiveClass("/newspage")}`}>
+              Manage News Page
+            </Link>
+            <Link to="/servicepage" className={`mb-2 ${getActiveClass("/servicepage")}`}>
+              Manage Services Page
+            </Link>
           </nav>
         </aside>
 
@@ -122,8 +128,18 @@ const Layout = ({ children, setIsAuthenticated }) => {
               </a>
             </div>
             <p className="mt-4">1234 Education Lane, Knowledge City, USA</p>
-            <p>Email: <a href="mailto:info@sm-educational.com" className="hover:text-gray-300">info@sm-educational.com</a></p>
-            <p>Phone: <a href="tel:+1234567890" className="hover:text-gray-300">+1 234 567 890</a></p>
+            <p>
+              Email:{" "}
+              <a
+                href="smeduconsultant@gmail.com"
+                className="hover:text-gray-300"
+              >
+                smeduconsultant@gmail.com
+              </a>
+            </p>
+            <p>
+              Phone:{"+91 9245664761"}
+            </p>
           </div>
         </div>
         {/* Copyright Info */}

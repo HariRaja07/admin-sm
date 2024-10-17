@@ -14,6 +14,8 @@ import HomePage from "./pages/HomePage";
 import AuditForm from "./pages/AuditForm";
 import AboutForm from "./pages/AboutForm";
 import LayoutForm from "./pages/LayoutForm";
+import NewsForm from "./pages/NewsForm";
+import ServiceForm from "./pages/ServiceForm";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -44,6 +46,8 @@ function App() {
           <Route path="/auditpage" element={<AuditForm/>}/>
           <Route path="/aboutpage" element={<AboutForm/>}/>
           <Route path="/layoutpage" element={<LayoutForm/>}/>
+          <Route path="/newspage" element={<NewsForm/>}/>
+          <Route path="/servicepage" element={<ServiceForm/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
